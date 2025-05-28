@@ -1,0 +1,2 @@
+pamdas
+numpy

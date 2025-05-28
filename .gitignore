@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+venv/
+.env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# macOS metadata
+.DS_Store
+
+# Logs and debugging
+*.log
+
+# Environment variables
+.env
+
+# Model and vectorizer files
+*.pkl
+*.joblib
+
+# VSCode and PyCharm
+.vscode/
+.idea/
+
+# Flask cache
+instance/
+*.pyc
+
+# System files
+Thumbs.db

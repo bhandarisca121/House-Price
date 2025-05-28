@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>House Price Predictor</title>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Predict House Price</h2>
+
+  <input type="number" id="bedrooms" placeholder="Bedrooms">
+  <input type="number" id="bathrooms" placeholder="Bathrooms">
+  <input type="number" id="sqft" placeholder="Square Footage">
+
+  <button onclick="predictPrice()">Predict Price</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  async function predictPrice() {
+    const data = {
+      Bedrooms: document.getElementById('bedrooms').value,
+      Bathrooms: document.getElementById('bathrooms').value,
+      SquareFootage: document.getElementById('sqft').value
+    };
+
+    const response = await fetch('/predict', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    if (result.predicted_price !== undefined) {
+      document.getElementById('result').innerText = `Predicted Price: $${result.predicted_price}`;
+    } else {
+      document.getElementById('result').innerText = 'Prediction failed. Check input.';
+    }
+  }
+</script>
+
+</body>
+</html>
