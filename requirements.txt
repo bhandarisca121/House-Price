@@ -1,2 +1,6 @@
-pamdas
+pandas
 numpy
+flask
+seaborn
+matplotlib
+
