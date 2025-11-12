@@ -3,4 +3,6 @@ This project predicts house price using synthetic data based on features such as
 
 
 # On May 29
-we added new code for eda using statistics
+
+
+# On July 2025, new version is added
